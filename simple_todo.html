@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Simple Todo</title>
+<script type="text/javascript">
+
+function removeTask(element) {
+	element.parentNode.removeChild(element);
+}
+window.onload = function() {
+	document.getElementById('submit').onclick = function() {
+		taskValue = document.getElementById('task').value;
+		newTask = document.createElement('li');
+		newList = document.createElement('a');
+		
+		newList.onmousedown = function() {
+			removeTask(this.parentNode);
+		}
+		newList.innerHTML = taskValue;
+		newTask.appendChild(newList);
+		document.getElementById('todo_tasks').appendChild(newTask);
+	}
+}
+
+</script>
+</head>
+
+<body>
+<h1>Todo Tasks</h1>
+<!--form id="frmTodo" name="frmTodo" method="post" action=""-->
+  <label for="item">New Todo</label>
+  <input type="text" name="task" id="task" />
+  <input type="submit" name="submit" id="submit" />
+<!--/form-->
+<h2>Current Tasks</h2>
+<ol id="todo_tasks"></ol>
+</body>
+</html>
